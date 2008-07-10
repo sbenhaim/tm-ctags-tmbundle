@@ -5,7 +5,9 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>"$TM_BUNDLE_SUPPORT/bin/project_autocomplete.rb"</string>
+	<string>#!/usr/bin/env ruby
+	require ENV['TM_BUNDLE_SUPPORT'] + '/bin/tmctags.rb' 
+	perform('complete')</string>	
 	<key>fallbackInput</key>
 	<string>word</string>
 	<key>input</key>

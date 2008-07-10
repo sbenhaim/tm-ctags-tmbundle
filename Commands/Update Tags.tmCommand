@@ -9,7 +9,7 @@
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
-	<string>^~]</string>
+	<string>^~P</string>
 	<key>name</key>
 	<string>Update Tags</string>
 	<key>output</key>
