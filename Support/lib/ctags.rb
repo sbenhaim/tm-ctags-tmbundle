@@ -37,18 +37,32 @@ module Ctags
   end
 
   def Ctags.build_snippet( hit )
-    if hit['args']
-      args = []
-      hit['args'].each_with_index do |arg, i|
-        arg.gsub!('$', '\$')
-        args << "${#{i + 1}:#{arg}}"
-      end
-      
-    end
     snippet = hit['name']
     snippet << '('
-    snippet << ' ' + args.join(", ") + ' ' if args
+    snippet << " #{args_snippet(hit['args'])} " if hit['args']
     snippet << ')$0'
+  end
+  
+  def Ctags.args_snippet( args )
+    result = ""
+    tab_stop = 1
+    optional = 0
+
+    args.each_with_index do |arg, i|
+      arg.gsub!('$', '\$')
+      is_optional = false
+      is_last = i + 1 == args.length
+      if arg =~ /=/
+        result << "${#{tab_stop}:"
+        tab_stop += 1
+        optional += 1
+        is_optional = true
+      end
+      result << ", " if i > 0
+      result << "${#{tab_stop}:#{arg}}"
+      tab_stop += 1
+    end
+    result + '}' * optional
   end
   
   def Ctags.tm_goto( hit )
