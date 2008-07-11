@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">352.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="8"/>
+			<integer value="11"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -181,31 +181,6 @@
 													<bool key="NSIsResizeable">YES</bool>
 													<reference key="NSTableView" ref="718969647"/>
 												</object>
-												<object class="NSTableColumn" id="605250423">
-													<double key="NSWidth">1.020000e+02</double>
-													<double key="NSMinWidth">4.000000e+01</double>
-													<double key="NSMaxWidth">1.000000e+03</double>
-													<object class="NSTableHeaderCell" key="NSHeaderCell">
-														<int key="NSCellFlags">75628032</int>
-														<int key="NSCellFlags2">0</int>
-														<string key="NSContents">Type</string>
-														<reference key="NSSupport" ref="26"/>
-														<reference key="NSBackgroundColor" ref="1006330765"/>
-														<reference key="NSTextColor" ref="790624048"/>
-													</object>
-													<object class="NSTextFieldCell" key="NSDataCell" id="960034869">
-														<int key="NSCellFlags">337772096</int>
-														<int key="NSCellFlags2">133120</int>
-														<string key="NSContents">Text Cell</string>
-														<reference key="NSSupport" ref="26"/>
-														<reference key="NSControlView" ref="718969647"/>
-														<reference key="NSBackgroundColor" ref="274750193"/>
-														<reference key="NSTextColor" ref="264506401"/>
-													</object>
-													<int key="NSResizingMask">3</int>
-													<bool key="NSIsResizeable">YES</bool>
-													<reference key="NSTableView" ref="718969647"/>
-												</object>
 												<object class="NSTableColumn" id="996344865">
 													<double key="NSWidth">3.000000e+02</double>
 													<double key="NSMinWidth">4.000000e+01</double>
@@ -222,6 +197,31 @@
 														<reference key="NSTextColor" ref="790624048"/>
 													</object>
 													<object class="NSTextFieldCell" key="NSDataCell" id="476457712">
+														<int key="NSCellFlags">337772096</int>
+														<int key="NSCellFlags2">133120</int>
+														<string key="NSContents">Text Cell</string>
+														<reference key="NSSupport" ref="26"/>
+														<reference key="NSControlView" ref="718969647"/>
+														<reference key="NSBackgroundColor" ref="274750193"/>
+														<reference key="NSTextColor" ref="264506401"/>
+													</object>
+													<int key="NSResizingMask">3</int>
+													<bool key="NSIsResizeable">YES</bool>
+													<reference key="NSTableView" ref="718969647"/>
+												</object>
+												<object class="NSTableColumn" id="605250423">
+													<double key="NSWidth">1.020000e+02</double>
+													<double key="NSMinWidth">4.000000e+01</double>
+													<double key="NSMaxWidth">1.000000e+03</double>
+													<object class="NSTableHeaderCell" key="NSHeaderCell">
+														<int key="NSCellFlags">75628032</int>
+														<int key="NSCellFlags2">0</int>
+														<string key="NSContents">Type</string>
+														<reference key="NSSupport" ref="26"/>
+														<reference key="NSBackgroundColor" ref="1006330765"/>
+														<reference key="NSTextColor" ref="790624048"/>
+													</object>
+													<object class="NSTextFieldCell" key="NSDataCell" id="960034869">
 														<int key="NSCellFlags">337772096</int>
 														<int key="NSCellFlags2">133120</int>
 														<string key="NSContents">Text Cell</string>
