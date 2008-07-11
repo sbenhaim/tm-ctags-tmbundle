@@ -1,17 +1,22 @@
-module Ctags
-  def Ctags.parse(line, index)
+module TM_Ctags
+  def TM_Ctags.parse(line, index)
     name = line[/^(\w+)/, 1]
     path = line.split(/\t+/)[1]
     type = line.split(/\t+/)[-2]
     line_no = line[ /line:(\d+)/, 1]
     file = File.basename(path) + ":" + line_no
     
-    args = parse_args( line )
-    signature = name + "(" 
-    signature << " " + args.join(", ") + " "
-    signature << ")"
+    if type =~ /function|method/
+      args = parse_args( line )
+      signature = name + "(" 
+      signature << " " + args.join(", ") + " "
+      signature << ")"
+    else
+      args = []
+      signature = name
+    end
     
-    overview = "#{type} #{signature}   < #{file}:#{line_no} >"
+    overview = "#{type} #{signature}   < #{file} >"
     
     { 
       'name' => name, 
@@ -26,7 +31,7 @@ module Ctags
     }
   end
   
-  def Ctags.parse_args( line )
+  def TM_Ctags.parse_args( line )
     sig = line[ %r{/\^\s*(.+?)\$/}, 1]
     raw = sig[/\((.*?)\)/, 1]
     if raw
@@ -36,14 +41,16 @@ module Ctags
     end
   end
 
-  def Ctags.build_snippet( hit )
+  def TM_Ctags.build_snippet( hit )
+    has_args = hit['args'].length > 0
     snippet = hit['name']
-    snippet << '('
-    snippet << " #{args_snippet(hit['args'])} " if hit['args']
-    snippet << ')$0'
+    snippet << '(' if has_args || hit['type'] =~ /function/
+    snippet << " #{args_snippet(hit['args'])} " if has_args
+    snippet << ')' if has_args || hit['type'] =~ /function/
+    snippet << '$0'
   end
   
-  def Ctags.args_snippet( args )
+  def TM_Ctags.args_snippet( args )
     result = ""
     tab_stop = 1
     optional = 0
@@ -65,7 +72,7 @@ module Ctags
     result + '}' * optional
   end
   
-  def Ctags.tm_goto( hit )
+  def TM_Ctags.tm_goto( hit )
     TextMate.go_to :file => File.join(ENV['TM_PROJECT_DIRECTORY'], hit['path']), :line => hit['line']
   end
 end

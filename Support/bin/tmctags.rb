@@ -6,7 +6,7 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
 require ENV['TM_BUNDLE_SUPPORT'] + '/lib/ctags.rb'
 
 unless ENV['TM_PROJECT_DIRECTORY']
-  TextMate.exit_show_tool_tip "You must be working with a project or directory to use Ctags."
+  TextMate.exit_show_tool_tip "You must be working with a project or directory to use TM_Ctags."
   exit
 end
 
@@ -22,17 +22,17 @@ def perform(action)
     nib = 'AutoComplete'
     word = ENV['TM_CURRENT_WORD']
     regex = /^#{word}/i
-    method = Ctags.method(:build_snippet)
+    method = TM_Ctags.method(:build_snippet)
   when 'find'
     nib = 'GotoSymbol'
     word = ENV['TM_CURRENT_WORD']
     regex = /^#{word}[^\w]/
-    method = Ctags.method(:tm_goto)
+    method = TM_Ctags.method(:tm_goto)
   when 'goto'
     nib = 'GotoSymbol'
     word = TextMate::UI.request_string :title => "Goto Project Symbol", :prompt => "Symbol"
     regex = /^#{word}/i
-    method = Ctags.method(:tm_goto)
+    method = TM_Ctags.method(:tm_goto)
   end
 
   nib = ENV['TM_BUNDLE_SUPPORT'] + "/nibs/#{nib}.nib"
@@ -43,7 +43,7 @@ def perform(action)
 
   index = 1
   tags.each do |line| 
-    hit = Ctags::parse(line, index) 
+    hit = TM_Ctags::parse(line, index) 
     unless hit['type'] == 'variable'
       hits << hit
       index += 1
