@@ -11,7 +11,7 @@
 	<key>keyEquivalent</key>
 	<string>@P</string>
 	<key>name</key>
-	<string>Goto Tag...</string>
+	<string>Goto Tag…</string>
 	<key>output</key>
 	<string>showAsTooltip</string>
 	<key>uuid</key>

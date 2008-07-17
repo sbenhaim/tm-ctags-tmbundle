@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>deleted</key>
-	<array>
-		<string>4E4A0404-8560-483A-B975-E53F6A6B7E25</string>
-	</array>
-	<key>mainMenu</key>
 	<dict>
-		<key>items</key>
+		<key>deleted</key>
 		<array>
-			<string>170E364D-24A5-418F-99D4-B1C250817B66</string>
-			<string>16C26D41-6B16-4846-AD9F-C94F00FD0AD1</string>
-			<string>9A5D55BD-CC3E-417A-8C7D-AFF18225FFAB</string>
-			<string>------------------------------------</string>
+			<string>4E4A0404-8560-483A-B975-E53F6A6B7E25</string>
+		</array>
+		<key>mainMenu</key>
+		<dict>
+			<key>items</key>
+			<array>
+				<string>170E364D-24A5-418F-99D4-B1C250817B66</string>
+				<string>16C26D41-6B16-4846-AD9F-C94F00FD0AD1</string>
+				<string>9A5D55BD-CC3E-417A-8C7D-AFF18225FFAB</string>
+				<string>------------------------------------</string>
+				<string>F82D2DF8-6914-4EEC-BA46-F1E4B1716108</string>
+				<string>------------------------------------</string>
+				<string>A4C26133-2E7F-4CC9-8A90-30EAD915716A</string>
+			</array>
+			<key>submenus</key>
+			<dict/>
+		</dict>
+		<key>name</key>
+		<string>TM Ctags</string>
+		<key>ordering</key>
+		<array>
 			<string>F82D2DF8-6914-4EEC-BA46-F1E4B1716108</string>
-			<string>------------------------------------</string>
+			<string>16C26D41-6B16-4846-AD9F-C94F00FD0AD1</string>
+			<string>170E364D-24A5-418F-99D4-B1C250817B66</string>
+			<string>9A5D55BD-CC3E-417A-8C7D-AFF18225FFAB</string>
 			<string>A4C26133-2E7F-4CC9-8A90-30EAD915716A</string>
 		</array>
-		<key>submenus</key>
-		<dict/>
+		<key>uuid</key>
+		<string>0D39D7BD-CD02-48EF-BB9C-2210BFFC5AD7</string>
+		<key>contactEmailRot13</key>
+		<string>selah@clockwork.net</string>
+		<key>contactName</key>
+		<string>Selah Ben-Haim</string>
+		<key>description</key>
+		<string><a http://github.com/sbenhaim/tm-ctags/wikis">TM Ctags</a> is a set of tools for using <a href="http://ctags.sourceforge.net/">Exuberant Ctags</a> with TextMate.</string>
 	</dict>
-	<key>name</key>
-	<string>TM Ctags</string>
-	<key>ordering</key>
-	<array>
-		<string>F82D2DF8-6914-4EEC-BA46-F1E4B1716108</string>
-		<string>16C26D41-6B16-4846-AD9F-C94F00FD0AD1</string>
-		<string>170E364D-24A5-418F-99D4-B1C250817B66</string>
-		<string>9A5D55BD-CC3E-417A-8C7D-AFF18225FFAB</string>
-		<string>A4C26133-2E7F-4CC9-8A90-30EAD915716A</string>
-	</array>
-	<key>uuid</key>
-	<string>0D39D7BD-CD02-48EF-BB9C-2210BFFC5AD7</string>
-</dict>
 </plist>
