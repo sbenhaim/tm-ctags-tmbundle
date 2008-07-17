@@ -17,7 +17,7 @@ Jumps to the file and line where the tag under the cursor is declared.
 Project Completion
 --------------------
 
-### ⌘<
+### ⌘< (⇧⌘,)
 
 Provides completions for the current word&mdash;including method/function arguments&mdash;pulling from the functions, methods, and classes declared in your project.
 
