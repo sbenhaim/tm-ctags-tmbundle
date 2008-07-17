@@ -5,9 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby
-require ENV['TM_BUNDLE_SUPPORT'] + '/bin/tmctags.rb' 
-perform('find')</string>
+	<string>"$TM_BUNDLE_SUPPORT/bin/tmctags.rb" find</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
@@ -16,8 +14,6 @@ perform('find')</string>
 	<string>Goto Current Tag</string>
 	<key>output</key>
 	<string>showAsTooltip</string>
-	<key>scope</key>
-	<string>source</string>
 	<key>uuid</key>
 	<string>170E364D-24A5-418F-99D4-B1C250817B66</string>
 </dict>

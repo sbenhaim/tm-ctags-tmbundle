@@ -5,9 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby
-require ENV['TM_BUNDLE_SUPPORT'] + '/bin/tmctags.rb' 
-perform('goto')</string>
+	<string>"$TM_BUNDLE_SUPPORT/bin/tmctags.rb" goto</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>

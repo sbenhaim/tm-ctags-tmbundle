@@ -5,9 +5,7 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>#!/usr/bin/env ruby
-require ENV['TM_BUNDLE_SUPPORT'] + '/bin/tmctags.rb' 
-perform('complete')</string>
+	<string>"$TM_BUNDLE_SUPPORT/bin/tmctags.rb" complete</string>
 	<key>fallbackInput</key>
 	<string>word</string>
 	<key>input</key>
@@ -18,8 +16,6 @@ perform('complete')</string>
 	<string>Project Autocomplete</string>
 	<key>output</key>
 	<string>insertAsSnippet</string>
-	<key>scope</key>
-	<string>source</string>
 	<key>uuid</key>
 	<string>9A5D55BD-CC3E-417A-8C7D-AFF18225FFAB</string>
 </dict>

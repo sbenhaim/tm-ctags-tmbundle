@@ -6,7 +6,7 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
-html_header "TM_Ctags"
+html_header "TM Ctags"
 Markdown.pl "$TM_BUNDLE_SUPPORT/docs/help.markdown"
 html_footer</string>
 	<key>input</key>
