@@ -8,7 +8,7 @@ module TM_Ctags
     line_no = line[ /line:(\d+)/, 1]
     file = File.basename(path) + ":" + line_no
     
-    if type =~ /function|method/
+    if type =~ /function|method|member/
       args = parse_args( line )
       signature = name + "(" 
       signature << " " + args.join(", ") + " "
@@ -46,9 +46,9 @@ module TM_Ctags
   def build_snippet( hit )
     has_args = hit['args'].length > 0
     snippet = hit['name']
-    snippet << '(' if has_args || hit['type'] =~ /function/
+    snippet << '(' if has_args || hit['type'] =~ /function|member/
     snippet << " #{args_snippet(hit['args'])} " if has_args
-    snippet << ')' if has_args || hit['type'] =~ /function/
+    snippet << ')' if has_args || hit['type'] =~ /function|member/
     snippet << '$0'
   end
   
