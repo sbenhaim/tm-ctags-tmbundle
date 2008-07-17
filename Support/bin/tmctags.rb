@@ -7,7 +7,7 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
 require ENV['TM_BUNDLE_SUPPORT'] + '/lib/tm_ctags.rb'
 
 unless ENV['TM_PROJECT_DIRECTORY']
-  TextMate.exit_show_tool_tip "You must be working with a project or directory to use TM_Ctags."
+  TextMate.exit_show_tool_tip "You must be working with a project or directory to use TM Ctags."
   exit
 end
 
