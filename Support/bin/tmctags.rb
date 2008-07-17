@@ -56,7 +56,7 @@ tags.each do |line|
   break if index > RESULT_LIMIT;
 end
 
-TextMate.exit_show_tool_tip "not found" if hits.length == 0
+TextMate.exit_show_tool_tip "Not found." if hits.length == 0
 
 if hits.length < 2
 	print method.call(hits[0] )
