@@ -13,9 +13,7 @@
 	<key>name</key>
 	<string>Update Project Tags</string>
 	<key>output</key>
-	<string>showAsTooltip</string>
-	<key>scope</key>
-	<string>source</string>
+	<string>discard</string>
 	<key>uuid</key>
 	<string>F82D2DF8-6914-4EEC-BA46-F1E4B1716108</string>
 </dict>
