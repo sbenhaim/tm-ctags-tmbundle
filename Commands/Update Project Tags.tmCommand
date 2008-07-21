@@ -13,7 +13,7 @@
 	<key>name</key>
 	<string>Update Project Tags</string>
 	<key>output</key>
-	<string>discard</string>
+	<string>showAsTooltip</string>
 	<key>uuid</key>
 	<string>F82D2DF8-6914-4EEC-BA46-F1E4B1716108</string>
 </dict>

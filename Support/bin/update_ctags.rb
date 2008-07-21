@@ -25,4 +25,5 @@ Dir.chdir(dir)
 
 TextMate.call_with_progress( :title => "TM Ctags", :message => "Indexing your project…", :indeterminate => true ) do
   result = `"#{ctags_bin}" #{args.join(' ')}`
+  puts "All done."
 end
