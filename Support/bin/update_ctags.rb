@@ -16,7 +16,9 @@ args = [
   "--PHP-kinds=+cf",
   "--regex-PHP='/abstract class ([^ ]*)/\1/c/'",
   "--regex-PHP='/interface ([^ ]*)/\1/c/'" ,
-  "--regex-PHP='/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/'"
+  "--regex-PHP='/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/'",
+  "--JavaScript-kinds=+cf",
+  "--regex-JavaScript='/(\w+) ?: ?function/\1/f/'",
   ]
   
 ctags_bin = ENV['TM_BUNDLE_SUPPORT'] + '/bin/ctags'
