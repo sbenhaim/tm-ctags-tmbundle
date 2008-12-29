@@ -11,7 +11,9 @@ unless ENV['TM_PROJECT_DIRECTORY']
   exit
 end
 
-unless File.exists?( ENV['TM_PROJECT_DIRECTORY'] + "/.tmtags" )
+ENV['TM_CTAGS_EXTRA_LIB'] = "" unless ENV['TM_CTAGS_EXTRA_LIB'] != nil
+
+unless File.exists?( File.join(ENV['TM_PROJECT_DIRECTORY'],".tmtags") ) | File.exists?( File.join( ENV['TM_CTAGS_EXTRA_LIB'], ".tmtags") )
   TextMate.exit_show_tool_tip "You need to Update Tags for this project/directory first. (⌥⌘P)"
   exit
 end
@@ -33,7 +35,8 @@ when 'find'
   method = TM_Ctags.method(:goto)
 when 'goto'
   nib = 'GotoSymbol'
-  word = TextMate::UI.request_string :title => "Goto Project Symbol", :prompt => "Symbol"
+  word = TextMate::UI.request_string(:title => "Goto Project Symbol", :prompt => "Symbol")
+  exit if word == nil
   regex = /^#{word}/i
   method = TM_Ctags.method(:goto)
 else
@@ -42,18 +45,22 @@ end
 
 nib = ENV['TM_BUNDLE_SUPPORT'] + "/nibs/#{nib}.nib"
 
-tags = File.read( ENV['TM_PROJECT_DIRECTORY'] + "/.tmtags" ).grep( regex )
-
 hits = []
 
-index = 1
-tags.each do |line| 
-  hit = TM_Ctags::parse(line, index) 
-  unless hit['type'] == 'variable'
-    hits << hit
-    index += 1
+for f in [ File.join(ENV['TM_PROJECT_DIRECTORY'], ".tmtags"), File.join( ENV['TM_CTAGS_EXTRA_LIB'], ".tmtags") ]
+  next unless File.exists?( f )
+  tags = File.read( f ).grep( regex )
+
+  index = 1
+  tags.each do |line|
+    hit = TM_Ctags::parse(line, index)
+    hit['f'] = File.dirname( f );
+    # unless hit['type'] == 'variable'
+      hits << hit
+      index += 1
+    # end
+    break if index > RESULT_LIMIT;
   end
-  break if index > RESULT_LIMIT;
 end
 
 TextMate.exit_show_tool_tip "Not found." if hits.length == 0

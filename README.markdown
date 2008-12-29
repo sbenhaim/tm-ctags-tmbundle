@@ -32,3 +32,8 @@ Goto Tag...
 ### ⌘⇧P
 
 Prompts for a tag (or the start of a tag) and jumps to the file and line where that tag is declared.
+
+TM\_CTAGS\_EXTRA\_LIB
+---------------------
+
+You can now exploit tags in another project by pointing a TM\_CTAGS\_EXTRA\_LIB project variable at another project root with a .tmctags file. Thanks [seanfarley](http://github.com/seanfarley "seanfarley").

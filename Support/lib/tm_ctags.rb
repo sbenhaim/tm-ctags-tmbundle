@@ -75,6 +75,6 @@ module TM_Ctags
   end
   
   def goto( hit )
-    TextMate.go_to :file => File.join(ENV['TM_PROJECT_DIRECTORY'], hit['path']), :line => hit['line']
+    TextMate.go_to :file => File.join(hit['f'], hit['path']), :line => hit['line']
   end
 end
