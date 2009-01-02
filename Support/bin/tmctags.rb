@@ -65,17 +65,27 @@ end
 
 TextMate.exit_show_tool_tip "Not found." if hits.length == 0
 
-if hits.length < 2
-	print method.call(hits[0] )
-  exit
-end
-
-result = %x{ "$DIALOG" -mc -p '#{{'hits' => hits}.to_plist.gsub("'", '"')}' "#{nib}" | pl }
-
-result = OSX::PropertyList.load(result)
-
-if result['result']
-  print method.call( result['result']['returnArgument'][0] )
+if action == 'complete'
+  
+  TextMate::exit_insert_snippet( hits[0]['name'] + hits[0]['insert'] ) if hits.length < 2
+  
+  TextMate::UI.complete(hits, :extra_chars => '_')
+  
 else
-  TextMate.exit_discard
+  
+  if hits.length < 2
+	  TM_Ctags::goto( hits[0] ) 
+  	TextMate::exit_discard
+	end
+
+  result = %x{ "$DIALOG" -mc -p '#{{'hits' => hits}.to_plist.gsub("'", '"')}' "#{nib}" | pl }
+
+  result = OSX::PropertyList.load(result)
+
+  if result['result']
+    TM_Ctags::goto( result['result']['returnArgument'][0] )
+  else
+    TextMate::exit_discard
+  end
+
 end

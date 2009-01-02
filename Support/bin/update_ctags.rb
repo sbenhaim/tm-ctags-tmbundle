@@ -1,5 +1,9 @@
 #!/usr/bin/env ruby
 
+=begin
+  TODO SB: change name, TAGS_INCLUDE, TAGS_EXCLUDE, EXPOSE CTAGS COMMAND, kinds
+=end
+
 require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
 require ENV['TM_SUPPORT_PATH'] + '/lib/progress.rb'
 
@@ -13,7 +17,7 @@ args = [
   "-R" ,
   "--exclude='.svn|.git|.csv'",
   "--tag-relative=yes",
-  "--PHP-kinds=+cf",
+  "--PHP-kinds=+cfi-v",
   "--regex-PHP='/abstract class ([^ ]*)/\1/c/'",
   "--regex-PHP='/interface ([^ ]*)/\1/c/'" ,
   "--regex-PHP='/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/'",

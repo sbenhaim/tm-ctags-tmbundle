@@ -15,7 +15,7 @@
 	<key>name</key>
 	<string>Project Completion</string>
 	<key>output</key>
-	<string>insertAsSnippet</string>
+	<string>discard</string>
 	<key>uuid</key>
 	<string>9A5D55BD-CC3E-417A-8C7D-AFF18225FFAB</string>
 </dict>

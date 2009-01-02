@@ -18,19 +18,26 @@ module TM_Ctags
       signature = name
     end
     
-    overview = "#{type} #{signature}   < #{file} >"
+    overview = "#{type} #{signature} — #{file}"
     
-    { 
-      'name' => name, 
-      'signature' => signature, 
-      'file' => file, 
-      'path' => path, 
-      'line' => line_no, 
-      'index' => index, 
-      'args' => args, 
-      'type' => type,
-      'overview' => overview
-    }
+    hit = {}
+    
+    hit['name']      = name 
+    hit['match']     = name
+    hit['signature'] = signature 
+    hit['file']      = file 
+    hit['path']      = path 
+    hit['line']      = line_no 
+    hit['index']     = index 
+    hit['args']      = args 
+    hit['type']      = type
+    
+
+    hit['overview'] = overview
+    hit['display']  = "#{name} — #{file}"
+    hit['insert']   = build_snippet( hit )
+    
+    hit
   end
   
   def parse_args( line )
@@ -43,9 +50,9 @@ module TM_Ctags
     end
   end
 
-  def build_snippet( hit )
+  def build_snippet( hit, include_symbol = false )
     has_args = hit['args'].length > 0
-    snippet = hit['name']
+    snippet = include_symbol ? hit['name'] : ""
     snippet << '(' if has_args || hit['type'] =~ /function|member/
     snippet << " #{args_snippet(hit['args'])} " if has_args
     snippet << ')' if has_args || hit['type'] =~ /function|member/
