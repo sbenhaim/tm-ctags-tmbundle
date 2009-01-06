@@ -11,7 +11,7 @@
 	<key>keyEquivalent</key>
 	<string>^]</string>
 	<key>name</key>
-	<string>Goto Current Tag</string>
+	<string>Jump to Current Tag</string>
 	<key>output</key>
 	<string>showAsTooltip</string>
 	<key>uuid</key>

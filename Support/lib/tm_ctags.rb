@@ -49,9 +49,9 @@ module TM_Ctags
     end
   end
 
-  def build_snippet( hit )
+  def build_snippet( hit, include_symbol = false )
     has_args = hit['args'].length > 0
-    snippet = hit['name']
+    snippet = include_symbol ? hit['name'] : ""
     snippet << '(' if has_args || hit['type'] =~ /function|member/
     snippet << " #{args_snippet(hit['args'])} " if has_args
     snippet << ')' if has_args || hit['type'] =~ /function|member/
