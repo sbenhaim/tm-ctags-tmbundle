@@ -38,6 +38,6 @@
 		<key>contactName</key>
 		<string>Selah Ben-Haim</string>
 		<key>description</key>
-		<string><![CDATA[<a href="http://github.com/sbenhaim/tm-ctags/wikis">TM Ctags</a> is a set of tools for using <a href="http://ctags.sourceforge.net/">Exuberant Ctags</a> with TextMate. ]]></string>
+		<string>&lt;a href="http://github.com/sbenhaim/tm-ctags/wikis"&gt;TM Ctags&lt;/a&gt; tags your TextMate project for code completion and navigation.</string>
 	</dict>
 </plist>

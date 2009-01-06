@@ -1,7 +1,7 @@
 module TM_Ctags
   module_function
   
-  def parse(line, index)
+  def parse(line)
     name = line[/^(\w+)/, 1]
     path = line.split(/\t+/)[1]
     type = line.split(/\t+/)[-2]
@@ -28,7 +28,6 @@ module TM_Ctags
     hit['file']      = file 
     hit['path']      = path 
     hit['line']      = line_no 
-    hit['index']     = index 
     hit['args']      = args 
     hit['type']      = type
     
@@ -50,9 +49,9 @@ module TM_Ctags
     end
   end
 
-  def build_snippet( hit, include_symbol = false )
+  def build_snippet( hit )
     has_args = hit['args'].length > 0
-    snippet = include_symbol ? hit['name'] : ""
+    snippet = hit['name']
     snippet << '(' if has_args || hit['type'] =~ /function|member/
     snippet << " #{args_snippet(hit['args'])} " if has_args
     snippet << ')' if has_args || hit['type'] =~ /function|member/
