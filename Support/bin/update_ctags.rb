@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 =begin
-  TODO SB: TAGS_INCLUDE, TAGS_EXCLUDE, EXPOSE CTAGS COMMAND, kinds
+  TODO SB: TAGS_INCLUDE, EXPOSE CTAGS COMMAND, Update help, choose route, screencast
 =end
 
 require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
