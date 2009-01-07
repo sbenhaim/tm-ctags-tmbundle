@@ -15,7 +15,7 @@
 	<key>name</key>
 	<string>Complete Tag</string>
 	<key>output</key>
-	<string>discard</string>
+	<string>insertAsSnippet</string>
 	<key>uuid</key>
 	<string>9A5D55BD-CC3E-417A-8C7D-AFF18225FFAB</string>
 </dict>

@@ -62,27 +62,18 @@ hits = hits.sort_by { |h| h['file'] }.each_with_index {|h, i| h['index'] = i }
 
 TextMate.exit_show_tool_tip "Not found." if hits.length == 0
 
-if action == 'complete'
-  
-  TextMate::exit_insert_snippet( hits[0]['name'] + hits[0]['insert'] ) if hits.length < 2
-  
-  TextMate::UI.complete(hits, :extra_chars => '_')
-  
+if hits.length < 2
+  TM_Ctags::goto( hits[0] ) 
+	TextMate::exit_discard
+end
+
+result = %x{ "$DIALOG" -mc -p '#{{'hits' => hits, 'title' => nib_title}.to_plist.gsub("'", '"')}' "TM_Ctags.nib" | pl }
+
+result = OSX::PropertyList.load(result)
+
+if result['result']
+  method = action == 'complete' ? :build_snippet : :goto
+  print TM_Ctags.send( method, result['result']['returnArgument'][0] )
 else
-  
-  if hits.length < 2
-	  TM_Ctags::goto( hits[0] ) 
-  	TextMate::exit_discard
-	end
-
-  result = %x{ "$DIALOG" -mc -p '#{{'hits' => hits, 'title' => nib_title}.to_plist.gsub("'", '"')}' "TM_Ctags.nib" | pl }
-
-  result = OSX::PropertyList.load(result)
-
-  if result['result']
-    TM_Ctags::goto( result['result']['returnArgument'][0] )
-  else
-    TextMate::exit_discard
-  end
-
+  TextMate::exit_discard
 end

@@ -4,14 +4,14 @@
   TODO SB: TAGS_INCLUDE, TAGS_EXCLUDE, EXPOSE CTAGS COMMAND, kinds
 =end
 
-# require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
-# require ENV['TM_SUPPORT_PATH'] + '/lib/progress.rb'
-# 
-# dir = ENV['TM_PROJECT_DIRECTORY']
-# nib = ENV['TM_BUNDLE_SUPPORT'] + "/nibs/Progress.nib"
-# 
-# excludes = ENV['TM_CTAGS_EXCLUDES'] || ".git .svn .cvs"
-# excludes = excludes.split(' ').map { |excl| "--exclude='#{excl}'" }
+require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
+require ENV['TM_SUPPORT_PATH'] + '/lib/progress.rb'
+
+dir = ENV['TM_PROJECT_DIRECTORY']
+nib = ENV['TM_BUNDLE_SUPPORT'] + "/nibs/Progress.nib"
+
+excludes = ENV['TM_CTAGS_EXCLUDES'] || ".git .svn .cvs"
+excludes = excludes.split(' ').map { |excl| "--exclude='#{excl}'" }
 
 args = [
   "-f .tmtags",
@@ -26,9 +26,6 @@ args = [
   "--JavaScript-kinds=+cf",
   "--regex-JavaScript='/(\w+) ?: ?function/\1/f/'",
   ]
-  
-p args.join(' ')
-exit
   
 args += excludes
   
