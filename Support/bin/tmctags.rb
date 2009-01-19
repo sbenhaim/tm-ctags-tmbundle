@@ -22,12 +22,14 @@ RESULT_LIMIT = 300
 
 action = ARGV[0]
 nib_title = "Jump to Tag…"
+method = :goto
 
 case action
 when 'complete'
   word = ENV['TM_CURRENT_WORD']
   regex = /^#{word}/i
   nib_title = "Completions"
+  method = :build_snippet
 when 'find'
   word = ENV['TM_CURRENT_WORD']
   regex = /^#{word}[^\w]/
@@ -35,7 +37,6 @@ when 'goto'
   word = TextMate::UI.request_string(:title => "Jump to Tag…", :prompt => "Tag")
   exit if word == nil
   regex = /^#{word}/i
-  method = TM_Ctags.method(:goto)
 else
   exit
 end
@@ -63,8 +64,8 @@ hits = hits.sort_by { |h| h['file'] }.each_with_index {|h, i| h['index'] = i }
 TextMate.exit_show_tool_tip "Not found." if hits.length == 0
 
 if hits.length < 2
-  TM_Ctags::goto( hits[0] ) 
-	TextMate::exit_discard
+  print TM_Ctags.send( method, hits[0] ) 
+  exit
 end
 
 result = %x{ "$DIALOG" -mc -p '#{{'hits' => hits, 'title' => nib_title}.to_plist.gsub("'", '"')}' "TM_Ctags.nib" | pl }
