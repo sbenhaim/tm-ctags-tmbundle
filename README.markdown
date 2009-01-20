@@ -42,7 +42,7 @@ Space delimited list of files or directories you don't want tagged. Shell wildca
 
 **TM\_CTAGS\_INCLUDES**
 
-Space delimited list of files you <u>do</u> want tagged. These take extended regex format (i.e., `.*\\\\.rb'). Excludes are ignored if you have includes.
+Space delimited list of files you <u>do</u> want tagged. These take extended regex format (i.e., `.*\\\\.rb'). Excludes are ignored if you use includes.
 
 **TM\_CTAGS\_OPTIONS**
 
