@@ -5,16 +5,18 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>"$TM_BUNDLE_SUPPORT/bin/tmctags.rb" complete</string>
+	<string>"$TM_BUNDLE_SUPPORT/bin/tmctags.rb" complete2</string>
 	<key>fallbackInput</key>
 	<string>word</string>
 	<key>input</key>
 	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>@&lt;</string>
 	<key>name</key>
-	<string>Complete Tag</string>
+	<string>Complete Tag (dialog2)</string>
 	<key>output</key>
-	<string>insertAsSnippet</string>
+	<string>showAsTooltip</string>
 	<key>uuid</key>
-	<string>9A5D55BD-CC3E-417A-8C7D-AFF18225FFAB</string>
+	<string>881514EC-7F4F-4EA8-9C36-1DA111B9326C</string>
 </dict>
 </plist>

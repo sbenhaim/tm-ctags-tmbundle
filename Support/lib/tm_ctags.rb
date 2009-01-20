@@ -23,12 +23,18 @@ module TM_Ctags
     hit = {}
     
     hit['name']      = name 
-    hit['signature'] = signature 
-    hit['file']      = file 
-    hit['path']      = path 
-    hit['line']      = line_no 
-    hit['args']      = args 
+    hit['match']     = name
+    hit['signature'] = signature
+    hit['file']      = file
+    hit['path']      = path
+    hit['line']      = line_no
+    hit['args']      = args
     hit['type']      = type
+    
+
+    hit['overview'] = overview
+    hit['display']  = "#{name}"
+    hit['insert']   = build_snippet( hit )
     
     hit
   end
@@ -45,7 +51,7 @@ module TM_Ctags
 
   def build_snippet( hit )
     has_args = hit['args'].length > 0
-    snippet = hit['name']
+    snippet = ""
     snippet << '(' if has_args || hit['type'] =~ /function|member/
     snippet << " #{args_snippet(hit['args'])} " if has_args
     snippet << ')' if has_args || hit['type'] =~ /function|member/
@@ -77,4 +83,13 @@ module TM_Ctags
   def goto( hit )
     TextMate.go_to :file => File.join(hit['f'], hit['path']), :line => hit['line']
   end
+  
+  def act_on( hit, action )
+    if action =~ /complete/
+      print hit['name'] + hit['insert']
+    else
+      goto( hit )
+    end
+  end
+  
 end
