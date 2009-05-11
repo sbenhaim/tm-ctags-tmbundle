@@ -6,19 +6,30 @@ require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
 
 require ENV['TM_BUNDLE_SUPPORT'] + '/lib/tm_ctags.rb'
 
-unless ENV['TM_PROJECT_DIRECTORY']
-  TextMate.exit_show_tool_tip "You must be working with a project or directory to use TM Ctags."
+# supporting old var for now
+ENV['TM_CTAGS_EXT_LIB'] ||= ENV['TM_CTAGS_EXTRA_LIB']
+
+unless ENV['TM_PROJECT_DIRECTORY'] || ENV['TM_CTAGS_EXT_LIB']
+  TextMate.exit_show_tool_tip "You must be working with a project or using TM_CTAGS_EXT_LIB to use TM Ctags."
   exit
 end
 
-ENV['TM_CTAGS_EXTRA_LIB'] = "" unless ENV['TM_CTAGS_EXTRA_LIB'] != nil
+tag_files = []
 
-unless File.exists?( File.join(ENV['TM_PROJECT_DIRECTORY'],".tmtags") ) | File.exists?( File.join( ENV['TM_CTAGS_EXTRA_LIB'], ".tmtags") )
-  TextMate.exit_show_tool_tip "You need to Update Tags for this project/directory first. (⌥⌘P)"
+[ ENV['TM_PROJECT_DIRECTORY'], ENV['TM_CTAGS_EXT_LIB'] ].each do |dir|
+  if dir && File.exists?( file = File.join( dir, ".tmtags" ) )
+    tag_files << file
+  end
+end
+
+if tag_files.length == 0
+  TextMate.exit_show_tool_tip "You need to Update Tags for this project first. (⌥⌘P)"
   exit
 end
 
-RESULT_LIMIT = 300
+tag_files.uniq!
+
+RESULT_LIMIT = ENV['TM_CTAGS_RESULT_LIMIT'] || 300
 
 action = ARGV[0]
 nib_title = "Jump to Tag…"
@@ -43,8 +54,7 @@ end
 
 hits = []
 
-[ File.join(ENV['TM_PROJECT_DIRECTORY'], ".tmtags"), File.join( ENV['TM_CTAGS_EXTRA_LIB'], ".tmtags") ].each do |f|
-  next unless File.exists?( f )
+tag_files.each do |f|
   tags = File.read( f ).grep( regex )
 
   index = 1
@@ -73,6 +83,7 @@ if hits.length < 2
   TM_Ctags::act_on( hits[0], action )
   exit
 end
+
 
 # Multiple hits requires a dialog box
 result = %x{ "$DIALOG" -mc -p '#{{'hits' => hits, 'title' => nib_title}.to_plist.gsub("'", '"')}' "TM_Ctags.nib" | pl }

@@ -33,7 +33,7 @@ module TM_Ctags
     
 
     hit['overview'] = overview
-    hit['display']  = "#{name}"
+    hit['display']  = signature
     hit['insert']   = build_snippet( hit )
     
     hit

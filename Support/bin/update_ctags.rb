@@ -3,7 +3,16 @@
 require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
 require ENV['TM_SUPPORT_PATH'] + '/lib/progress.rb'
 
+# supporting old var for now
+ENV['TM_CTAGS_EXT_LIB'] ||= ENV['TM_CTAGS_EXTRA_LIB']
+
 dir = ENV['TM_PROJECT_DIRECTORY']
+
+unless dir
+  TextMate.exit_show_tool_tip "You must be working with a project or using TM_CTAGS_EXT_LIB to use TM Ctags."
+  exit
+end
+
 
 # Required arguments
 base_args = [
@@ -34,7 +43,8 @@ else
   includes = ENV['TM_CTAGS_INCLUDES']
   
   if includes
-    filter = "find -E . -iregex '(#{includes.split(' ').join('|')})' | "
+    includes = includes.split(' ').join("' -or -iname '")
+    filter = "find . -iname '#{includes}' | "
     args << "-L -"
   else
     args << "-R"
