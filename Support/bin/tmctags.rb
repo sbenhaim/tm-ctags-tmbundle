@@ -18,7 +18,7 @@ tag_files = []
 
 [ ENV['TM_PROJECT_DIRECTORY'], ENV['TM_CTAGS_EXT_LIB'] ].each do |dir|
   if dir && File.exists?( file = File.join( dir, ".tmtags" ) )
-    tag_files << file
+    tag_files << file.downcase
   end
 end
 
@@ -54,10 +54,11 @@ end
 
 hits = []
 
+index = 1
+
 tag_files.each do |f|
   tags = File.read( f ).grep( regex )
 
-  index = 1
   tags.each do |line|
     hit = TM_Ctags::parse( line )
     hit['f'] = File.dirname( f );

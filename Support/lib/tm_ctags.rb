@@ -74,7 +74,7 @@ module TM_Ctags
         is_optional = true
       end
       result << ", " if i > 0
-      result << "${#{tab_stop}:#{arg}}"
+      result << "${#{tab_stop}:#{ arg.gsub( /[}]/, '\}' ) }}"
       tab_stop += 1
     end
     result + '}' * optional
