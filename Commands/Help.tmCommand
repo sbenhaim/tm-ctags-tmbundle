@@ -7,7 +7,7 @@
 	<key>command</key>
 	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
 html_header "TM Ctags"
-Markdown.pl "$TM_BUNDLE_SUPPORT/docs/help.markdown"
+Markdown.pl "$TM_BUNDLE_PATH/README.markdown"
 html_footer</string>
 	<key>input</key>
 	<string>none</string>
